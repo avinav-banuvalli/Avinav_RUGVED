@@ -1,3 +1,6 @@
+# Q2: Write a python program to sort a string alphabetically and print the count of each character.
+
+# Below method accepts a string and returns the sorted version of the string and a dictionary with char and count of char in the sorted string
 def sort_count(s):
     sorted_string = "".join(sorted(s.lower()))
 
@@ -7,6 +10,7 @@ def sort_count(s):
 
     return sorted_string, char_count
 
+# Taking the input string from the user
 input_string = input("Enter a string: ")
 sorted_string, char_count = sort_count(input_string)
 
