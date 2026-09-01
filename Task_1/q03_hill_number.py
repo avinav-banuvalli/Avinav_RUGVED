@@ -1,3 +1,7 @@
+# Q3 Write a python program to check if given number is a hill number
+
+# Below method checks if the given number is a Hill number or not
+
 def hill_number(num):
     digits=[]
     while num!=0:
@@ -7,12 +11,13 @@ def hill_number(num):
 
     digits.reverse()
 
+# A Hill number should have atleast 3 digits
     if len(digits)<3:
        return False
+    
+    peak_index=digits.index(max(digits))
 
-    peak_value=max(digits)
-    peak_index=digits.index(peak_value)
-
+# The peak of a Hill number cannot be the first or the last digit
     if peak_index==0 or peak_index==len(digits) - 1:
         return False
 
