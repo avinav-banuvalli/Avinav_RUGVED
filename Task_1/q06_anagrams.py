@@ -15,5 +15,11 @@ def anagrams(str1,str2):
     else:
         return False
 
-print(anagrams("listen","silent"))
+word1=input("Enter the first string: ")
+word2=input("Enter the second string: ")
+if (anagrams(word1,word2)):
+   print("It is an Anagram")
+else:
+    print("It is not an Anagram")
+
     
