@@ -1,41 +1,44 @@
-n=int(input("Enter the number of rows"))
-for i in range(1,n+1):
+# Q9-Code to print Pattern
+
+# Taking input from the user
+n = int(input("Enter the number of rows"))
+for i in range(1, n+1):
     for j in range(n-i):
-        print(" ",end="")
+        print(" ",end = "")
     for j in range(i):
-        print("*",end=" ")
+        print("*",end = " ")
     print()
 
-for i in range(n-1,0,-1):
+for i in range(n-1, 0, -1):
     for j in range(n-i):
-        print(" ",end="")
+        print(" ",end = "")
     for j in range(i):
-        print("*",end=" ")
+        print("*",end = " ")
     print()
 
-for i in range(1,n+1):
+for i in range(1, n+1):
     for j in range(i):
-        if j>0:
-            print(" ", end="")
-        print("*",end="")
-    for k in range(4*(n-i)+1):
-        print(" ",end="")
+        if j > 0:
+            print(" ", end = "")
+        print("*",end = "")
+    for k in range(4 * (n-i) + 1):
+        print(" ",end = "")
     for u in range(i):
-        if u>0:
-           print(" ",end="") 
-        print("*",end="")
+        if u > 0:
+           print(" ",end = "") 
+        print("*",end = "")
     print()
 
-for i in range(n-1,0,-1):
+for i in range(n-1, 0, -1):
     for j in range(i):
-        if j>0:
-            print(" ",end="")
-        print("*",end="")
-    for k in range(4*(n-i)+1):
-        print(" ",end="")
+        if j > 0:
+            print(" ",end = "")
+        print("*",end = "")
+    for k in range(4 * (n-i) + 1):
+        print(" ",end = "")
     for u in range(i):
-        if u>0:
-            print(" ",end="")
-        print("*",end="")
+        if u > 0:
+            print(" ",end = "")
+        print("*",end = "")
     print()
 
