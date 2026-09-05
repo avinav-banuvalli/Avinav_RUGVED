@@ -1,3 +1,5 @@
+# Q13-Implementing classes
+
 from abc import ABC,abstractmethod 
 class Shape(ABC):
     def __init__(self,c):
@@ -14,6 +16,7 @@ class Square(Shape):
     def get_area(self):
         return self.side*self.side
 
+# just testing the code using print to see if it works
 s=Square("Red",5)
 print(s.get_color())
 print(s.get_area())
