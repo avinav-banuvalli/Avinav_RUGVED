@@ -15,4 +15,6 @@ def encrypt(w,n):
         else:
             result += i
     return result
-print(encrypt("Hello World!",3))
+word=input("Enter the word to be encrypted using ceasars cipher:")
+num=int(input("Enter the value of n:"))
+print(encrypt(word,num))
