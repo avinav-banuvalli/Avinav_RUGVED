@@ -28,10 +28,10 @@ print("Q7 - Find the team which won the match by the highest and lowest number o
 df_win = df[df["win_by_runs"] > 0]
 
 win_high = df_win["win_by_runs"].max()
-print("Team that won by the highest number of runs, which is", win_high, "is", df.loc[df["win_by_runs"] == win_high, "winner"].tolist()) 
+print("Team that won by the highest number of runs, which is", win_high, "is", df.loc[df["win_by_runs"] == win_high, "winner"].unique().tolist()) 
 
 win_low = df_win["win_by_runs"].min()
-print("Team that won by the lowest number of runs, which is", win_low, "is", df.loc[df["win_by_runs"] == win_low, "winner"].tolist())
+print("Team that won by the lowest number of runs, which is", win_low, "is", df.loc[df["win_by_runs"] == win_low, "winner"].unique().tolist())
 
 
 
