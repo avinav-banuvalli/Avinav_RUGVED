@@ -113,8 +113,70 @@ plt.title('Toss decisions across seasons')
 plt.xlabel('Season')
 plt.ylabel('Number of matches')
 plt.legend(title='Decision')
-#plt.tight_layout()
 plt.show()
+
+print("\nQ20 - Visualize Total Matches vs Winning Matches vs Win Rate for all teams.")
+team_played = pd.concat([df["team1"], df["team2"]]).value_counts()
+team_wins = df["winner"].value_counts()
+
+team_summary = pd.DataFrame({"played":team_played, "won":team_wins}).fillna(0)
+team_summary["win_rate"] = (team_summary["won"] / team_summary["played"] * 100)
+team_summary = team_summary.sort_values("win_rate", ascending = False)
+print(team_summary)
+
+fig, ax1 = plt.subplots(figsize=(12, 6))
+
+team_summary[["played","won"]].plot(kind="bar", ax=ax1, color=["#bbb", "#4c9"])
+ax1.set_ylabel("Matches")
+ax2 = ax1.twinx()
+ax2.plot(range(len(team_summary)),team_summary["win_rate"], "o-",color="crimson", label="win rate %")
+ax2.set_ylabel("Win rate (%)")
+
+ax1.set_title("Total vs Won vs Win Rate by team")
+fig.tight_layout()
+plt.show()
+
+print("\nQ21 - Find the distribution of the teams who won the matches")
+team_wins = df["winner"].value_counts()
+
+team_wins.plot(kind="bar",figsize=(10,5))
+plt.title('Distribution of match winning teams')
+plt.xlabel('Team')
+plt.ylabel('Matches won')
+plt.xticks(rotation=60, ha='right')
+plt.tight_layout()
+plt.show()
+
+print("\nQ22 - Visualize the toss outcomes of all teams.")
+
+toss_wins = df["toss_winner"].value_counts()
+
+toss_wins.plot(kind="bar",figsize=(10,5))
+plt.title('Toss wins per team')
+plt.xlabel('Team')
+plt.ylabel('Toss wins')
+plt.xticks(rotation=60, ha='right')
+plt.tight_layout()
+plt.show()
+
+print("\nQ23 - Visualize the top 5 teams with the most wins across all seasons.")
+
+team_wins = df["winner"].value_counts().head(5)
+
+team_wins.plot(kind="bar",figsize=(10,5))
+plt.title('Top 5 teams by most wins')
+plt.xlabel('Team')
+plt.ylabel('Matches won')
+plt.xticks(rotation=60, ha='right')
+plt.tight_layout()
+plt.show()
+
+
+
+
+
+
+
 
 
 
