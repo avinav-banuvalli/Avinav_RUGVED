@@ -27,11 +27,13 @@ print(df.groupby("toss_winner")["toss_decision"].value_counts(),"\n\n")
 print("Q7 - Find the team which won the match by the highest and lowest number of runs.")
 df_win = df[df["win_by_runs"] > 0]
 
-df_win_high_idx = df_win["win_by_runs"].idxmax()
-print("Team that won by the highest number of runs:", df.loc[df_win_high_idx, "winner"],"-", df.loc[df_win_high_idx, "win_by_runs"], "runs") 
+win_high = df_win["win_by_runs"].max()
+print("Team that won by the highest number of runs, which is", win_high, "is", df.loc[df["win_by_runs"] == win_high, "winner"].tolist()) 
 
-df_win_low_idx = df_win["win_by_runs"].idxmin()
-print("Team that won by the lowest number of runs:",df.loc[df_win_low_idx, "winner"],"-", df.loc[df_win_low_idx, "win_by_runs"], "runs\n")
+win_low = df_win["win_by_runs"].min()
+print("Team that won by the lowest number of runs, which is", win_low, "is", df.loc[df["win_by_runs"] == win_low, "winner"].tolist())
+
+
 
 
 
