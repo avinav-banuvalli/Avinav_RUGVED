@@ -7,7 +7,7 @@ def repetition(arr):
 
     return -1
 
-print(repetition([10,5,3,4,3,5,6]))
-print(repetition([1,2,3,4]))
-print(repetition([5,5]))
-print(repetition([]))
+number = input("Enter numbers with repetition separated by spaces:").split()
+array = [int(x) for x in number]
+print(repetition(array))
+
