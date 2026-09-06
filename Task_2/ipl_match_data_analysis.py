@@ -1,6 +1,7 @@
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 df = pd.read_csv("./data/matches.csv")
 df_d = pd.read_csv("./data/deliveries.csv")
@@ -69,6 +70,62 @@ print("The list of players who got player of the match more than 3 times:", pom_
 
 print("\nQ11 - Find all deliveries where the batsman scored a six")
 print("All deliveries where batsman scored a six is:", df_d[df_d["batsman_runs"] == 6].reset_index(drop=True).to_string())
+
+print("\nQ12 - Compute the average runs scored in matches in all the venues.")
+runs_per_match = df_d.groupby("match_id")["total_runs"].sum().reset_index()
+runs_per_match = runs_per_match.merge(df[["id", "venue"]], left_on = "match_id", right_on = "id")
+print("The average runs scored in matches at all the venues:",runs_per_match.groupby("venue")["total_runs"].mean())
+
+print("\nQ13 - Find the umpires who umpired the maximum number of times.")
+umps = pd.concat([df["umpire1"], df["umpire2"], df["umpire3"]]).value_counts()
+print(umps.idxmax(),"umpired the most")
+print("Umpires who umpired the most:\n", umps.head(5))
+
+print("\nQ14 - Find the total number of matches played in each season.")
+print("Total number of matches played in each season are:",df["season"].value_counts().sort_index())
+
+print("\nQ15 - Find total runs scored in each season")
+runs_per_match = df_d.groupby("match_id")["total_runs"].sum().reset_index()
+runs_per_match = runs_per_match.merge(df[["id", "season"]], left_on = "match_id", right_on = "id")
+print("The total runs scored in each season:\n",runs_per_match.groupby("season")["total_runs"].sum())
+
+print("\nQ16 - Calculate total number of runs scored by each batsman and display top 10")
+top_10_runs_scorres = df_d.groupby("batsman")["batsman_runs"].sum().sort_values(ascending=False).head(10)
+print("Top 10 run scorres are:\n", top_10_runs_scorres)
+
+print("\nQ17 - Compute the total number of wickets taken by each bowler")
+not_bowler_credit = {"hit wicket","retired hurt","runout","stumped","obstructing the field"}
+bowler_wickets = df_d[df_d["player_dismissed"].notna() & ~df_d["dismissal_kind"].isin(not_bowler_credit)]
+per_bowler_wickets = bowler_wickets.groupby("bowler").size().sort_values(ascending = False)
+print("Total number of wickets taken by each bowler:\n",per_bowler_wickets.to_string())
+
+print("\nQ18 - Compute batting averages and display top 10.")
+runs = df_d.groupby("batsman")["batsman_runs"].sum()
+dismissals = df_d["player_dismissed"].value_counts()
+avg = (runs/dismissals)
+print("Top 10 batting averages:", avg.sort_values(ascending = False).head(10))
+
+print("\nQ19 - Visualize toss decisions across all seasons")
+
+toss_by_season = df.groupby(["season","toss_decision"]).size().unstack()
+toss_by_season.plot(kind="bar", stacked = True)
+plt.title('Toss decisions across seasons')
+plt.xlabel('Season')
+plt.ylabel('Number of matches')
+plt.legend(title='Decision')
+#plt.tight_layout()
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
