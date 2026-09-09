@@ -11,7 +11,7 @@ def fibonacci(n):
 
 # Function to print Fibonacci series
 def fibonacci_series(n):
-    for i in range(1, n+1):
+    for i in range(0, n):
         # The end = " " is used so that all numbers can be printed in a single line
         print(fibonacci(i), end = " ")
     print()
