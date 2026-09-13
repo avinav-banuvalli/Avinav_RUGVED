@@ -50,7 +50,7 @@ def plot_trajectory(history):
     ax.plot(xs[0], ys[0], marker = 'o', color = 'green', label = "Start")
     ax.plot(xs[len(xs) - 1], ys[len(ys) - 1], marker = 'o', color = 'red', label = "End")
     # Makes small arrows at each (x,y) and at each change in angle
-    ax.quiver(xs, ys, us, vs, angles = 'xy')
+    ax.quiver(xs, ys, us, vs, angles = 'xy', scale = 30, width = 0.02, headwidth = 2, headlength = 4)
     ax.set_xlabel("X")
     ax.set_ylabel("Y")
     # Pad is used to leave some space between heading and graph
