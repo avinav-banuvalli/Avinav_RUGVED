@@ -39,7 +39,6 @@ def compute_pose_velocity(pose, v, omega, duration):
 def run_commands(commands, start_pose):
     current_pose = start_pose
     # Creating empty list with start_pose at 0th index
-    waypoints = [start_pose]
     history = [start_pose]
     for command in commands:
         parts = command.split()
@@ -87,16 +86,6 @@ def plot_trajectory(history):
     ax.grid(True)
     plt.tight_layout()
     plt.show()
-
-# Function to get input of the number of points
-def get_commands():
-    n = int(input("Enter the number of commands:"))
-    # Empty file to store all the commands as strings
-    commands = []
-    for i in range(n):
-        command = input(f"Enter command {i + 1}:")
-        commands.append(command)
-    return commands 
 
 # Function to read the file
 def read_commands_file():
